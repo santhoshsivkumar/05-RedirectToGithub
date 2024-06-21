@@ -22,7 +22,7 @@ const RedirectToGitHub = () => {
 
       // Create a Date object
       const now = new Date();
-      alert("now: " + now);
+
       // Format the date and time
       const formattedDateTime = now.toLocaleString("en-GB", {
         day: "2-digit",
