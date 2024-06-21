@@ -1,7 +1,7 @@
 // src/RedirectToGitHub.js
 import React, { useEffect, useRef } from "react";
 import axios from "axios";
-import { db } from "./firebase";
+import { db } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 const RedirectToGitHub = () => {
@@ -61,6 +61,7 @@ const RedirectToGitHub = () => {
     if (!dataSavedRef.current) {
       fetchDataAndSave();
     }
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {

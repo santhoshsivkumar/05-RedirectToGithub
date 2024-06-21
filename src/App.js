@@ -1,6 +1,6 @@
 // src/App.js
 import React from "react";
-import RedirectToGitHub from "./RedirectToGitHub";
+import RedirectToGitHub from "./components/RedirectToGitHub";
 
 const App = () => {
   return (
