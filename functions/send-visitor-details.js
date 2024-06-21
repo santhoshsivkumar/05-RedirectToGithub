@@ -10,7 +10,6 @@ exports.handler = async (event, context) => {
       <head>
         <style>
           body {
-            font-family: Arial, sans-serif;
             background-color: #f4f4f4;
             color: #333;
           }
@@ -27,7 +26,7 @@ exports.handler = async (event, context) => {
           }
           .info {
             margin-top: 10px;
-            font-size: 16px;
+            font-size: 13px;
             color: #666;
           }
         </style>
