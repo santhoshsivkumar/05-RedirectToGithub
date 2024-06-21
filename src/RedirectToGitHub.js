@@ -66,15 +66,19 @@ const RedirectToGitHub = () => {
   useEffect(() => {
     // Redirect to GitHub after a delay
     const redirectTimer = setTimeout(() => {
-      window.location.href = "https://github.com/your-profile";
+      window.location.href = "https://github.com/santhosh-sivkumar";
     }, 3000);
 
     return () => clearTimeout(redirectTimer); // Cleanup timer on component unmount
   }, []);
 
   return (
-    <div>
-      <p>Redirecting to GitHub...</p>
+    <div className="flex items-center justify-center h-screen bg-github-dark-blue text-white">
+      <div className="text-center">
+        <p className="text-2xl font-bold text-gray-800 mb-20">
+          Redirecting to GitHub...
+        </p>
+      </div>
     </div>
   );
 };
