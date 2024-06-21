@@ -1,7 +1,7 @@
 // src/RedirectToGitHub.js
 import React, { useEffect, useRef } from "react";
 import axios from "axios";
-import { db } from "../firebase";
+import { db, timestamp } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
 
 const RedirectToGitHub = () => {
@@ -41,6 +41,7 @@ const RedirectToGitHub = () => {
         postal: location.postal,
         userAgent,
         referrer,
+        timestamp,
         dateTime: formattedDateTime,
       };
 
