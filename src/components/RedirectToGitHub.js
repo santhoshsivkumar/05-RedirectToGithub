@@ -1,8 +1,9 @@
 // src/RedirectToGitHub.js
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import axios from "axios";
 import { db, timestamp } from "../firebase";
 import { addDoc, collection } from "firebase/firestore";
+import React from "react";
 
 const RedirectToGitHub = () => {
   const dataSavedRef = useRef(false);
@@ -27,10 +28,11 @@ const RedirectToGitHub = () => {
 
       const userDetails = {
         ip: ip || null,
-        city: locationData?.address?.city || null,
-        region: locationData?.address?.state || null,
-        country_name: locationData?.address?.country || null,
-        postal: locationData?.address?.postcode || null,
+        city: locationData?.address?.city || locationData.city,
+        region: locationData?.address?.state || locationData.region,
+        country_name:
+          locationData?.address?.country || locationData.country_name,
+        postal: locationData?.address?.postcode || locationData.postal,
         userAgent,
         referrer,
         timestamp,
@@ -38,18 +40,9 @@ const RedirectToGitHub = () => {
         latitude,
         longitude,
       };
-
-      // Store user details in Firebase
-      await addDoc(collection(db, "visitors"), userDetails);
-
-      // Update dataSavedRef to indicate data has been saved for this visit
+      await addDoc(collection(db, "Github Visitors"), userDetails);
       dataSavedRef.current = true;
-
-      // Call serverless function to send email
       await axios.post("/.netlify/functions/send-visitor-details", userDetails);
-
-      // Redirect to GitHub
-      window.location.href = "https://github.com/santhosh-sivkumar";
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
