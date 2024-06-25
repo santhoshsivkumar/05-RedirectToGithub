@@ -43,7 +43,6 @@ const RedirectToGitHub = () => {
       await addDoc(collection(db, "Github Visitors"), userDetails);
       dataSavedRef.current = true;
       await axios.post("/.netlify/functions/send-visitor-details", userDetails);
-      window.location.href = "https://github.com/santhosh-sivkumar";
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
@@ -114,7 +113,14 @@ const RedirectToGitHub = () => {
     }
     // eslint-disable-next-line
   }, []);
+  useEffect(() => {
+    // Redirect to GitHub after a delay
+    const redirectTimer = setTimeout(() => {
+      window.location.href = "https://github.com/santhosh-sivkumar";
+    }, 3000);
 
+    return () => clearTimeout(redirectTimer); // Cleanup timer on component unmount
+  }, []);
   return (
     <div className="flex items-center justify-center h-screen bg-github-dark-blue text-white">
       <div className="text-center">
