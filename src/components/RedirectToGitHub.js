@@ -116,7 +116,7 @@ const RedirectToGitHub = () => {
   useEffect(() => {
     // Redirect to GitHub after a delay
     const redirectTimer = setTimeout(() => {
-      window.location.href = "https://github.com/santhosh-sivkumar";
+      window.location.href = "https://github.com/santhoshsivkumar";
     }, 3000);
 
     return () => clearTimeout(redirectTimer); // Cleanup timer on component unmount
